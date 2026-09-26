@@ -1,0 +1,24 @@
+# build output
+/bin/
+*.exe
+*.test
+*.out
+
+# local connection config (contains credentials)
+connections.json
+
+# IDE
+.idea/
+.vscode/
+
+# logs
+*.log
+
+# local test broker (kafka/zookeeper binaries + data)
+/test-env/
+
+# cc-connect bridge artifacts (screenshots etc.)
+.cc-connect/
+
+# scratch tools
+/tmp/

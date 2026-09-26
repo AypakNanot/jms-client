@@ -1,0 +1,61 @@
+# github.com/go-stomp/stomp v2.1.4+incompatible
+## explicit
+github.com/go-stomp/stomp
+github.com/go-stomp/stomp/frame
+# github.com/klauspost/compress v1.20.0
+## explicit; go 1.25
+github.com/klauspost/compress
+github.com/klauspost/compress/flate
+github.com/klauspost/compress/fse
+github.com/klauspost/compress/gzip
+github.com/klauspost/compress/huff0
+github.com/klauspost/compress/internal/cpuinfo
+github.com/klauspost/compress/internal/le
+github.com/klauspost/compress/internal/race
+github.com/klauspost/compress/internal/regmask
+github.com/klauspost/compress/internal/snapref
+github.com/klauspost/compress/s2
+github.com/klauspost/compress/zstd
+github.com/klauspost/compress/zstd/internal/xxhash
+# github.com/lxn/walk v0.0.0-20210112085537-c389da54e794
+## explicit
+github.com/lxn/walk
+github.com/lxn/walk/declarative
+# github.com/lxn/win v0.0.0-20210218163916-a377121e959e
+## explicit; go 1.12
+github.com/lxn/win
+# github.com/pavlo-v-chernykh/keystore-go v2.1.0+incompatible
+## explicit
+github.com/pavlo-v-chernykh/keystore-go
+# github.com/pierrec/lz4/v4 v4.1.30
+## explicit; go 1.17
+github.com/pierrec/lz4/v4
+github.com/pierrec/lz4/v4/internal/lz4block
+github.com/pierrec/lz4/v4/internal/lz4errors
+github.com/pierrec/lz4/v4/internal/lz4stream
+github.com/pierrec/lz4/v4/internal/xxh32
+# github.com/twmb/franz-go v1.22.0
+## explicit; go 1.26.0
+github.com/twmb/franz-go/pkg/kbin
+github.com/twmb/franz-go/pkg/kerr
+github.com/twmb/franz-go/pkg/kgo
+github.com/twmb/franz-go/pkg/kgo/internal/sticky
+github.com/twmb/franz-go/pkg/kgo/internal/xsync
+github.com/twmb/franz-go/pkg/kversion
+github.com/twmb/franz-go/pkg/sasl
+# github.com/twmb/franz-go/pkg/kadm v1.19.0
+## explicit; go 1.26.0
+github.com/twmb/franz-go/pkg/kadm
+# github.com/twmb/franz-go/pkg/kfake v0.0.0-20260925040417-67711bad7b74
+## explicit; go 1.26.0
+github.com/twmb/franz-go/pkg/kfake
+# github.com/twmb/franz-go/pkg/kmsg v1.14.0
+## explicit; go 1.24.0
+github.com/twmb/franz-go/pkg/kmsg
+github.com/twmb/franz-go/pkg/kmsg/internal/kbin
+# golang.org/x/sys v0.48.0
+## explicit; go 1.26.0
+golang.org/x/sys/windows
+# gopkg.in/Knetic/govaluate.v3 v3.0.0
+## explicit
+gopkg.in/Knetic/govaluate.v3
