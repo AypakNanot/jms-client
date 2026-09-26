@@ -199,6 +199,7 @@ func (a *app) buildWorkArea() Composite {
 									AssignTo: &a.targetCB,
 									Editable: true,
 									Model:    []string{"（先选择连接）"},
+									MaxSize:  Size{Width: 420, Height: 0},
 								},
 								Label{Text: "分区(可空):"},
 								LineEdit{AssignTo: &a.partitionEdit, CueBanner: "Kafka 专用，空=自动"},
@@ -212,7 +213,7 @@ func (a *app) buildWorkArea() Composite {
 									VScroll:       true,
 									HScroll:       true,
 									StretchFactor: 1,
-									Text:          "{\n  \n}",
+									Text:          "{\r\n  \r\n}",
 								},
 							}},
 							Composite{Layout: HBox{Spacing: 6}, Children: []Widget{

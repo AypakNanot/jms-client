@@ -74,13 +74,13 @@ func Run(smoke, uitest bool) error {
 					TreeView{
 						AssignTo:             &tv,
 						Model:                model,
-						MinSize:              Size{Width: 220, Height: 0},
+						MinSize:              Size{Width: 150, Height: 0},
 						OnItemActivated:      func() { a.editConn(mw, tv) },
 						OnCurrentItemChanged: func() { a.onSelectConn() },
-						StretchFactor:        1,
+						StretchFactor:        1, // 与右侧 5 : 1 → 左栏约占 1/6
 					},
 					Composite{
-						StretchFactor: 3,
+						StretchFactor: 5,
 						Layout:        VBox{Spacing: 0},
 						Children: []Widget{
 							a.buildWelcome(),
@@ -1092,12 +1092,16 @@ func (a *app) toggleLive() {
 
 	a.liveSeq++
 	seq := a.liveSeq
+	isKafkaLive := conn.Type == config.TypeKafka
 	push := func(m adapter.Message) {
 		a.mw.Synchronize(func() {
 			if seq != a.liveSeq {
 				return
 			}
-			m.Offset = int64(len(a.lastMsgs))
+			if !isKafkaLive {
+				// AMQ 无原生 offset，用位置序号；Kafka 保留真实 offset
+				m.Offset = int64(len(a.lastMsgs))
+			}
 			a.lastMsgs = append(a.lastMsgs, m)
 			a.msgModel.reset(a.msgRows())
 		})
@@ -1127,17 +1131,17 @@ func (a *app) toggleLive() {
 	}
 	a.liveStop = stop
 	a.liveBtn.SetText("停止订阅")
-	a.pageNo = 0
-	a.pageCount = 0
+	// 保留已有查询结果：同主题直接追加；跨主题才重置列表
+	if a.lastMsgsTopic != "" && a.lastMsgsTopic != dest {
+		a.msgModel.reset(nil)
+		a.lastMsgs = nil
+	}
+	a.lastMsgsTopic = dest
 	if a.pageInfo != nil {
-		a.pageInfo.SetText("实时接收中…")
+		a.pageInfo.SetText("实时接收中…（已保留之前的查询结果）")
 	}
 	a.updatePageButtons()
-	// 清空旧列表，开始实时收集
-	a.msgModel.reset(nil)
-	a.lastMsgs = nil
-	a.lastMsgsTopic = dest
-	a.statusMsg("已订阅「" + dest + "」，实时接收中…（再点一次停止）")
+	a.statusMsg("已订阅「" + dest + "」，新消息将追加显示…（再点一次停止）")
 }
 
 // msgRows 由 lastMsgs 生成表格行。
